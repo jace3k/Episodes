@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Ellipse?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MovieController">
+   <top>
+      <BorderPane BorderPane.alignment="CENTER">
+         <left>
+            <ToolBar fx:id="title_toolbar1" prefHeight="45.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <items>
+                  <Ellipse fill="#ff7721" radiusX="11.0" radiusY="10.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label fx:id="title_label" alignment="CENTER" prefHeight="28.0" text="FILM">
+                     <font>
+                        <Font name="Calibri Light Italic" size="24.0" />
+                     </font>
+                  </Label>
+               </items>
+            </ToolBar>
+         </left>
+         <center>
+            <ToolBar fx:id="title_toolbar2" prefHeight="45.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </center>
+         <right>
+            <ToolBar fx:id="title_toolbar3" nodeOrientation="RIGHT_TO_LEFT" prefHeight="45.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <items>
+                  <Label fx:id="id_label" text="IDLabel" />
+               </items>
+            </ToolBar>
+         </right>
+      </BorderPane>
+   </top>
+   <bottom>
+      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <items>
+          <Button fx:id="back_button" mnemonicParsing="false" text="Wróć" />
+            <Button fx:id="fav_button" mnemonicParsing="false" text="Dodaj do ulubionych" />
+            <Button fx:id="seasons_button" mnemonicParsing="false" text="Sezony" />
+        </items>
+      </ToolBar>
+   </bottom>
+   <center>
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="title" text="Tytuł filmu i rok" textAlignment="CENTER">
+               <font>
+                  <Font name="Calibri Light" size="35.0" />
+               </font>
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+            </Label>
+            <Label fx:id="genre" text="Gatunek">
+               <font>
+                  <Font name="Calibri Light Italic" size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+            </Label>
+            <Label fx:id="plot" text="Fabuła">
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+            </Label>
+            <Label fx:id="date" text="Data">
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+               <font>
+                  <Font name="System Italic" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </center>
+   <right>
+      <Pane fx:id="poster_pane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </right>
+</BorderPane>

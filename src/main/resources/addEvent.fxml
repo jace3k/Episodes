@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Ellipse?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+   <center>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab fx:id="tab1" text="Szukajka">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <bottom>
+                        <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                          <items>
+                              <TextField fx:id="search_text_field" alignment="CENTER" prefHeight="31.0" prefWidth="515.0" promptText="PODAJ TYTUŁ..." />
+                            <Button fx:id="search_button" mnemonicParsing="false" text="Szukaj" />
+                          </items>
+                        </ToolBar>
+                     </bottom>
+                     <center>
+                        <ScrollPane BorderPane.alignment="CENTER">
+                           <content>
+                              <VBox fx:id="search_vbox" prefHeight="314.0" prefWidth="581.0" />
+                           </content>
+                        </ScrollPane>
+                     </center>
+                  </BorderPane>
+               </content>
+          </Tab>
+          <Tab fx:id="tab2" text="Ulubione">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <bottom>
+                        <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                          <items>
+                            <Button fx:id="export_button" mnemonicParsing="false" text="Eksportuj do kalendarza" />
+                              <Button fx:id="remove_button" mnemonicParsing="false" text="Usuń zaznaczone" />
+                          </items>
+                        </ToolBar>
+                     </bottom>
+                     <center>
+                        <VBox fx:id="fav_vbox" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+               </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+   <top>
+      <BorderPane BorderPane.alignment="CENTER">
+         <left>
+            <ToolBar fx:id="title_toolbar1" prefHeight="45.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <items>
+                  <Ellipse fill="#ffd81f" radiusX="11.0" radiusY="10.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label fx:id="title_label" alignment="CENTER" prefHeight="28.0" prefWidth="155.0" text="FILMY I SERIALE">
+                     <font>
+                        <Font name="Calibri Light Italic" size="24.0" />
+                     </font>
+                  </Label>
+               </items>
+            </ToolBar>
+         </left>
+         <center>
+            <ToolBar fx:id="title_toolbar2" prefHeight="45.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </center>
+         <right>
+            <ToolBar fx:id="title_toolbar3" nodeOrientation="RIGHT_TO_LEFT" prefHeight="45.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <items>
+                  <Button fx:id="exit_button" mnemonicParsing="false" text="x" />
+                <Button fx:id="minimize_button" mnemonicParsing="false" text="_" />
+              </items>
+            </ToolBar>
+         </right>
+      </BorderPane>
+   </top>
+</BorderPane>

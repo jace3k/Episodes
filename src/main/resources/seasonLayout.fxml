@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Ellipse?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="300.0" minWidth="400.0" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SeasonListController">
+   <top>
+      <BorderPane BorderPane.alignment="CENTER">
+         <center>
+            <ToolBar fx:id="title_toolbar1" prefHeight="45.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <items>
+                  <Ellipse fill="#ff7721" radiusX="11.0" radiusY="10.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label text="Wszystkie odcinki">
+                     <font>
+                        <Font name="Calibri Light Italic" size="25.0" />
+                     </font>
+                  </Label>
+               </items>
+            </ToolBar>
+         </center>
+      </BorderPane>
+   </top>
+   <bottom>
+      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <items>
+          <Button fx:id="back_button" mnemonicParsing="false" text="Zamknij" />
+        </items>
+      </ToolBar>
+   </bottom>
+   <center>
+      <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <content>
+            <VBox fx:id="vbox_list" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="381.0" />
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>
