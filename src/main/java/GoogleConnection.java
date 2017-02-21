@@ -6,12 +6,8 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
-import com.google.api.client.util.DateTime;
 import com.google.api.client.util.store.FileDataStoreFactory;
-import com.google.api.services.calendar.Calendar;
 import com.google.api.services.calendar.CalendarScopes;
-import com.google.api.services.calendar.model.Event;
-import com.google.api.services.calendar.model.EventDateTime;
 
 import java.io.File;
 import java.io.IOException;
@@ -63,47 +59,5 @@ public class GoogleConnection {
         return new com.google.api.services.calendar.Calendar.Builder(HTTP_TRANSPORT, JSON_FACTORY, credential)
                 .setApplicationName(APPLICATION_NAME)
                 .build();
-    }
-
-    public static void calendarActions(String dateString, String titleEvent) throws Exception {
-
-        Calendar service = getCalendarService();
-/*
-        List 10 events from the primary calendar.
-        DateTime now = new DateTime(System.currentTimeMillis());
-        Events events = service.events().list("primary")
-                .setMaxResults(10)
-                .setTimeMin(now)
-                .setOrderBy("startTime")
-                .setSingleEvents(true)
-                .execute();
-        List<Event> items = events.getItems();
-        if(items.size() == 0) {
-            System.out.println("Nie ma żadnych następnych eventów.");
-        } else {
-            System.out.println("Nadchodzące wydarzenia: ");
-            for(Event event : items) {
-                DateTime start = event.getStart().getDateTime();
-                if(start == null) {
-                    start = event.getStart().getDate();
-                }
-                System.out.printf("%s (%s)\n", event.getSummary(), start);
-            }
-        }
-*/
-        Event event = new Event()
-                .setSummary(titleEvent)
-                .setLocation("Internet")
-                .setDescription(titleEvent);
-
-        DateTime startDate = new DateTime(dateString);
-        EventDateTime start = new EventDateTime()
-                .setDate(startDate);
-        event.setStart(start);
-        event.setEnd(start);
-
-        event = service.events().insert("primary", event).execute();
-        System.out.println("Event created: " + event.getHtmlLink());
-
     }
 }

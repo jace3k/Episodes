@@ -1,5 +1,3 @@
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -24,6 +22,7 @@ public class SeasonListController implements Initializable {
 
     public void initialize(URL location, ResourceBundle resources) {
         back_button.setDefaultButton(true);
+        vbox_list.getChildren().removeAll(vbox_list.getChildren());
         int i = 1;
         for(String t : epList) {
             DynamicLabel dl = new DynamicLabel(t);
@@ -31,10 +30,6 @@ public class SeasonListController implements Initializable {
             vbox_list.getChildren().add(dl);
             i++;
         }
-        back_button.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                ((Stage) ((Node)event.getSource()).getScene().getWindow()).close();
-            }
-        });
+        back_button.setOnAction(event -> ((Stage) ((Node)event.getSource()).getScene().getWindow()).close());
     }
 }

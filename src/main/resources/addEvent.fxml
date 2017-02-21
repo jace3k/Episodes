@@ -44,7 +44,8 @@
                         <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                           <items>
                             <Button fx:id="export_button" mnemonicParsing="false" text="Eksportuj do kalendarza" />
-                              <Button fx:id="remove_button" mnemonicParsing="false" text="Usuń zaznaczone" />
+                              <Label fx:id="loading_label" text="Label" />
+                              <Label fx:id="loading_label2" text="Label" />
                           </items>
                         </ToolBar>
                      </bottom>

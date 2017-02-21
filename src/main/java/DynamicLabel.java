@@ -1,17 +1,8 @@
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-
-import java.io.IOException;
 
 
 /**
@@ -19,11 +10,12 @@ import java.io.IOException;
  */
 public class DynamicLabel extends BorderPane {
     private String id;
-    private String backupStyle;
+    private String type;
 
     public DynamicLabel(int number, String name, String id, String type, String year) {
         super();
         this.id = id;
+        this.type = type;
         setMinHeight(50);
         //setMaxWidth(570);
         setPadding(new Insets(10,10,10,10));
@@ -35,21 +27,9 @@ public class DynamicLabel extends BorderPane {
         setRight(new Label(type));
         setCenter(new Label(name + " " + year));
         setOnMousePressed(new MouseListener());
-        setOnMouseReleased(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent event) {
-                setOpacity(0.8);
-            }
-        });
-        setOnMouseEntered(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent event) {
-                setOpacity(0.8);
-            }
-        });
-        setOnMouseExited(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent event) {
-                setOpacity(1);
-            }
-        });
+        setOnMouseReleased(event -> setOpacity(0.8));
+        setOnMouseEntered(event -> setOpacity(0.8));
+        setOnMouseExited(event -> setOpacity(1));
     }
 
     public DynamicLabel(String errorMsg) {
@@ -59,29 +39,19 @@ public class DynamicLabel extends BorderPane {
         setCenter(new Label(errorMsg));
     }
 
+    public String getID() {
+        return this.id;
+    }
+
+    public String getType() {
+        return this.type;
+    }
+
     class MouseListener implements EventHandler<MouseEvent> {
         public void handle(MouseEvent event) {
             setOpacity(0.5);
             Manager.getInstance().activeID = id;
-            Parent root = null;
-            try {
-                Stage dialog = new Stage();
-                dialog.initStyle(StageStyle.UNDECORATED);
-                dialog.initModality(Modality.APPLICATION_MODAL);
-                dialog.initOwner(((Node)event.getSource()).getScene().getWindow());
-                root = FXMLLoader.load(getClass().getResource("movieLayout.fxml"));
-                Scene scene = new Scene(root);
-                dialog.setScene(scene);
-                dialog.show();
-
-                //root = FXMLLoader.load(getClass().getResource("movieLayout.fxml"));
-                //((Stage) ((Node)event.getSource()).getScene().getWindow()).setScene(new Scene(root));
-
-            } catch (IOException e) {
-                e.printStackTrace();
-                Lo.g("Problem ze zmianą okna.");
-            }
-
+            Manager.getInstance().createNewModalWindow(event, "movieLayout.fxml");
         }
     }
 }
